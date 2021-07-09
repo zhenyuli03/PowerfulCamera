@@ -1,0 +1,27 @@
+﻿syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
+
+option csharp_namespace = "GrpcGreeter";
+package greet;
+
+
+
+// The greeting service definition.
+service Greeter {
+//输入字符串
+  rpc PrintfMessage (_String) returns(google.protobuf.Empty);
+  rpc AddHalconWindow (google.protobuf.Empty) returns(_String);
+  rpc DispayObj (stream image) returns (google.protobuf.Empty);
+}
+message image{
+
+}
+
+message HalconWindow{
+}
+
+message _String {
+  string Text = 1;
+}

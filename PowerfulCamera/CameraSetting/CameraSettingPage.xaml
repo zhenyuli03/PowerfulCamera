@@ -1,0 +1,181 @@
+﻿<Controls:MetroWindow
+      x:Class="PowerfulCamera.CameraSetting.CameraSettingPage"
+      xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:attached="clr-namespace:DMSkin.Attached;assembly=DMSkin"
+      xmlns:DMSkin="clr-namespace:DMSkin;assembly=DMSkin"
+      xmlns:Halcon="clr-namespace:HalconDotNet;assembly=halcondotnet"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PowerfulCamera.CameraTools"
+      xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+      xmlns:mx="clr-namespace:PowerfulCamera.Markup"
+      xmlns:vc="clr-namespace:PowerfulCamera.ValueConverter"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="700"
+      Title="摄像头设置窗口" Height="800" Width="1000" Closed="MetroWindow_Closed">
+
+    <Controls:MetroWindow.Resources>
+        <Thickness x:Key="ControlMargin">0 5 0 0</Thickness>
+    </Controls:MetroWindow.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <local:HalconWindow x:Name="HalconWindow1" Background="Black" Grid.Row="0" 
+                            MyHWindow="{Binding CurrentHWindow, Mode=OneWayToSource}"/>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="3*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="7*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Style="{StaticResource AduButtonIcon}" attached:Icon.Geometry="{StaticResource Icon_Left}" Background="Transparent" Margin="0,0,0,0" Grid.Row="0" Grid.Column="0"                                    
+                    attached:Icon.Height="35"                                                    
+                    ToolTip="先左"                                    
+                    Foreground="#FF7132CD"
+                    HorizontalAlignment="Center"
+                    Visibility="{Binding LeftButtonVisibility}"
+                    Command="{Binding LeftButtonCommand}"/>
+            <Button Style="{StaticResource AduButtonIcon}" attached:Icon.Geometry="{StaticResource Icon_Right}" Background="Transparent" Margin="0,0,0,0" Grid.Row="0" Grid.Column="2"                                    
+                    attached:Icon.Height="35"                                                    
+                    ToolTip="先右"                                    
+                    Foreground="#FF7132CD"
+                    HorizontalAlignment="Center"
+                    Visibility="{Binding RightButtonVisibility}"
+                    Command="{Binding RightButtonCommand}"/>
+            <DockPanel Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+                <Border BorderThickness="3,0,3,0" BorderBrush="Red">
+                    <DockPanel>
+                        <Button Grid.Column="1" Style="{StaticResource AduButtonIcon}" attached:Icon.Geometry="{StaticResource 清除}" Background="Transparent" Margin="5,0,5,0"                                    
+                            attached:Icon.Height="35"                                        
+                            ToolTip="移除ROI"
+                            Foreground="Red"
+                            VerticalAlignment="Bottom"
+                            Command="{Binding CleanROICommand}"/>
+                        <!--<Button Grid.Column="1" Style="{StaticResource AduButtonIcon}" attached:Icon.Geometry="{StaticResource 暂停}" Background="Transparent" Margin="5,0,5,0"                                    
+                            attached:Icon.Height="35"                                        
+                            ToolTip="暂停"
+                            Foreground="Red"
+                            VerticalAlignment="Bottom"
+                            Command="{Binding StopButtonCommand}"/>-->
+                        <ToggleButton Width="35"
+                              Height="35"
+                              Margin="5,0,5,0"
+                              Foreground="Red"
+                              VerticalAlignment="Bottom"
+                              IsChecked="{Binding StopGrabIsChecked}"
+                              Command="{Binding StopGrabClick}"
+                              Style="{DynamicResource MahApps.Styles.ToggleButton.ExpanderHeader.Base}">
+                            <ToggleButton.ContentTemplate>
+                                <DataTemplate>
+                                    <iconPacks:PackIconModern Width="30"
+                                                      Height="30"
+                                                      Kind="ControlPause" />
+                                </DataTemplate>
+                            </ToggleButton.ContentTemplate>
+                        </ToggleButton>
+                        <Button Grid.Column="1" Style="{StaticResource AduButtonIcon}" attached:Icon.Geometry="{StaticResource 直线}" Background="Transparent" Margin="5,0,5,0"                                    
+                            attached:Icon.Height="35"                                        
+                            ToolTip="画直线"
+                            Foreground="#FF431CAA"
+                            VerticalAlignment="Bottom"
+                            Command="{Binding DrawLineCommand}"/>
+                        <Button Grid.Column="1" Style="{StaticResource AduButtonIcon}" attached:Icon.Geometry="{StaticResource 画圆}" Background="Transparent" Margin="5,0,5,0"                                    
+                            attached:Icon.Height="35"                                        
+                            ToolTip="画圆"
+                            Foreground="#FF431CAA"
+                            VerticalAlignment="Bottom"
+                            Command="{Binding DrawCircleCommand}"/>
+                        <Button Grid.Column="1" Style="{StaticResource AduButtonIcon}" attached:Icon.Geometry="{StaticResource 画椭圆}" Background="Transparent" Margin="5,0,5,0"                                    
+                            attached:Icon.Height="35"                                        
+                            ToolTip="画椭圆"
+                            Foreground="#FF431CAA"
+                            VerticalAlignment="Bottom"
+                            Command="{Binding DrawEllipseCommand}"/>
+                        <Button Grid.Column="1" Style="{StaticResource AduButtonIcon}" attached:Icon.Geometry="{StaticResource 画矩形}" Background="Transparent" Margin="5,0,5,0"                                    
+                            attached:Icon.Height="35"                                        
+                            ToolTip="画矩形"
+                            Foreground="#FF431CAA"
+                            VerticalAlignment="Bottom"
+                            Command="{Binding DrawRectangleCommand}"/>
+                        <Button Grid.Column="1" Style="{StaticResource AduButtonIcon}" attached:Icon.Geometry="{StaticResource 画旋转矩形}" Background="Transparent" Margin="5,0,5,0"                                    
+                            attached:Icon.Height="35"                                        
+                            ToolTip="画旋转矩形"
+                            Foreground="#FF431CAA"
+                            VerticalAlignment="Bottom"
+                            Command="{Binding DrawVectorRectangleCommand}"/>
+                        <Button Grid.Column="1" Style="{StaticResource AduButtonIcon}" attached:Icon.Geometry="{StaticResource 钢笔}" Background="Transparent" Margin="5,0,5,0"                                    
+                            attached:Icon.Height="35"                                        
+                            ToolTip="画任意区域"
+                            Foreground="#FF431CAA"
+                            VerticalAlignment="Bottom"
+                            Command="{Binding DrawAnythingCommand}"/>
+                    </DockPanel>
+                </Border>
+                <Border Margin="20,0,0,0" BorderThickness="0,0,3,0" BorderBrush="Red">
+                    <DockPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <RadioButton Content="合并" GroupName="DrawMode" IsChecked="{Binding MergeIsChecked}"
+                                     Margin="5,0,5,0" FontSize="20" Foreground="#FF431CAA"
+                                     FontWeight="DemiBold"/>
+                        <RadioButton Content="交集" GroupName="DrawMode" IsChecked="{Binding IntersectionIsChecked}"
+                                     Margin="5,0,5,0"  FontSize="20" Foreground="#FF431CAA"
+                                     FontWeight="DemiBold"/>
+                        <RadioButton Content="差集" GroupName="DrawMode" IsChecked="{Binding SubtractionIsChecked}"
+                                     Margin="5,0,5,0"  FontSize="20" Foreground="#FF431CAA"
+                                     FontWeight="DemiBold"/>
+                    </DockPanel>
+                </Border>
+                <Border Margin="20,0,0,0" BorderThickness="0,0,3,0" BorderBrush="Red">
+                    <Button Grid.Column="1" Style="{StaticResource AduButtonIcon}" attached:Icon.Geometry="{StaticResource 照片}" Background="Transparent" Margin="5,0,5,0"                                    
+                            attached:Icon.Height="35"                                        
+                            ToolTip="打开图片"
+                            Foreground="#FF431CAA"
+                            VerticalAlignment="Bottom"
+                            Command="{Binding OpenImageFileCommand}"/>
+                </Border>
+            </DockPanel>
+            <GroupBox Grid.Row="1" Grid.ColumnSpan="3" Style="{StaticResource AduGroupBox}" Header="{Binding CurrentItemName}" FontWeight="Bold" Margin="3,0" FontSize="30" Foreground="#FF7132CD" BorderThickness="3,0,0,0" BorderBrush="#FFB22D2D" Background="#FFB22D2D">
+                <ScrollViewer Style="{StaticResource DMScrollViewer}" HorizontalScrollBarVisibility="Disabled" Padding="10">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <DockPanel Grid.Row="0" VerticalAlignment="Center">
+                            <Label Content="曝光:" FontSize="30"/>
+                            <TextBlock Text="{Binding ElementName=ExposureSlider, Path=Value, StringFormat=0.0}" VerticalAlignment="Center" Margin="50,0,50,0"/>
+                            <Slider x:Name="ExposureSlider" Value="{Binding CurrentExposureValue}"  Margin="20,0,150,0" SmallChange="0.1"
+                                    Minimum="{Binding ExposureSliderMinNum}"
+                                    Maximum="{Binding ExposureSliderMaxNum}" 
+                                    ValueChanged="ExposureSlider_ValueChanged"/>
+                        </DockPanel>
+                        <DockPanel Grid.Row="1" VerticalAlignment="Center">
+                            <Label Content="增益:" FontSize="30"/>
+                            <TextBlock Text="{Binding ElementName=GainSlider, Path=Value, StringFormat=0.0}" VerticalAlignment="Center" Margin="50,0,50,0"/>
+                            <Slider x:Name="GainSlider" Value="{Binding CurrentGainValue}"  Margin="20,0,150,0" SmallChange="1"
+                                    Minimum="{Binding GainSliderMinNum}"
+                                    Maximum="{Binding GainSliderMaxNum}" 
+                                    ValueChanged="GainSlider_ValueChanged"/>
+                        </DockPanel>
+                        <Controls:MetroProgressBar VerticalAlignment="Center" Grid.Row="2"
+                                               Margin="4"
+                                               Maximum="100"
+                                               Minimum="0"
+                                               Width="350"
+                                               Foreground="#FF241CC3"
+                                               IsIndeterminate="True"
+                                               Visibility="{Binding ProgressBar}"/>
+                    </Grid>
+                </ScrollViewer>
+            </GroupBox>
+        </Grid>
+    </Grid>
+</Controls:MetroWindow>

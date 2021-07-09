@@ -1,0 +1,110 @@
+﻿<Controls:MetroWindow 
+        x:Class="PowerfulCamera.PythonEdit.PythonEditWindow"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:attached="clr-namespace:DMSkin.Attached;assembly=DMSkin"
+        xmlns:DMSkin="clr-namespace:DMSkin;assembly=DMSkin"
+        xmlns:Halcon="clr-namespace:HalconDotNet;assembly=halcondotnet"
+        xmlns:local="clr-namespace:PowerfulCamera.PythonEdit"
+        xmlns:wfh="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"
+        xmlns:wfc="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms" 
+        xmlns:local1="clr-namespace:PowerfulCamera.CameraTools"
+    mc:Ignorable="d"
+        Title="PythonEditWindow" Height="800" Width="1200" MinHeight="800" MinWidth="1200" Foreground="Black" Closing="MetroWindow_Closing" x:Name="self"  DataContext="{Binding ElementName=self,Path=VM}">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="3"/>
+            <ColumnDefinition Width="300" MinWidth="300"/>
+        </Grid.ColumnDefinitions>
+        <GridSplitter Grid.Column="1" Width="3" Background="Black" HorizontalAlignment="Stretch"/>
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <Border BorderBrush="#2B2833" BorderThickness="0,0,0,3" Height="50" Grid.Column="0">
+                    <DockPanel HorizontalAlignment="Left" VerticalAlignment="Center">
+                        <Button Style="{StaticResource AduButtonIcon}" attached:Icon.Geometry="{StaticResource Python}" Background="Transparent" Margin="10,0,10,0"                                    
+                            attached:Icon.Height="40"
+                            ToolTip="打开Python"
+                            VerticalAlignment="Bottom"
+                            Command="{Binding OpenPythonCommand}"/>
+                        <Button Style="{StaticResource AduButtonIcon}" attached:Icon.Geometry="{StaticResource VsCode}" Background="Transparent" Margin="10,0,10,0"                                    
+                            attached:Icon.Height="40"
+                            ToolTip="打开VSCode"
+                            VerticalAlignment="Bottom"
+                            Command="{Binding OpenVSCodeCommand}"/>
+                        <Controls:MetroProgressBar VerticalAlignment="Center"
+                                               Margin="4"
+                                               Maximum="100"
+                                               Minimum="0"
+                                               Width="400"
+                                               Foreground="#FF241CC3"
+                                               IsIndeterminate="True"
+                                               Visibility="{Binding ProgressBar}"/>
+                    </DockPanel>
+                </Border>
+                <Border BorderBrush="#2B2833" BorderThickness="0,0,0,3" Height="50" Grid.Column="1">
+                    <DockPanel HorizontalAlignment="Right" VerticalAlignment="Center">
+                        <Button Style="{StaticResource AduButtonIcon}" attached:Icon.Geometry="{StaticResource 移除图片}" Background="Transparent" Margin="10,0,10,0"                                    
+                            attached:Icon.Height="40"
+                            ToolTip="移除图片"
+                            VerticalAlignment="Bottom"
+                            Command="{Binding ClearPhotoCommand}"/>
+                        <Button Style="{StaticResource AduButtonIcon}" attached:Icon.Geometry="{StaticResource 清除文本}" Background="Transparent" Margin="10,0,10,0"                                    
+                            attached:Icon.Height="40"
+                            ToolTip="清除文本"
+                            VerticalAlignment="Bottom"
+                            Command="{Binding ClearRichTextBoxCommand}"/>
+                    </DockPanel>
+                </Border>
+            </Grid>
+            <Border CornerRadius="4" Margin="0" Grid.Row="1">
+                <WindowsFormsHost x:Name="form1"
+                              HorizontalAlignment="Stretch"
+                              VerticalAlignment="Stretch"
+                                Grid.Row="1">
+                    <wfc:FlowLayoutPanel x:Name="flowLayoutPanel1">
+                    </wfc:FlowLayoutPanel>
+                </WindowsFormsHost>
+            </Border>
+        </Grid>
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Border BorderBrush="#2B2833" BorderThickness="0,0,0,3">
+                <ScrollViewer  Margin="0,20,0,0" Style="{StaticResource DMScrollViewer}">
+                    <ItemsControl x:Name="ItemControl" ItemsSource="{Binding PhotoWindowList}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <local1:HalconWindow/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+            </Border>
+            <Border BorderBrush="#2B2833" BorderThickness="0,3,0,0" Grid.Row="1">
+                <RichTextBox x:Name="richTextBox">
+                    <RichTextBox.Resources>
+                        <Style TargetType="{x:Type Paragraph}">
+                            <Setter Property="Margin" Value="1"/>
+                        </Style>
+                    </RichTextBox.Resources>
+                </RichTextBox>
+            </Border>
+        </Grid>
+    </Grid>
+</Controls:MetroWindow>

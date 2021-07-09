@@ -1,0 +1,15 @@
+﻿<UserControl x:Class="PowerfulCamera.CameraTools.HalconWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Halcon="clr-namespace:HalconDotNet;assembly=halcondotnet"
+             xmlns:local="clr-namespace:PowerfulCamera.CameraTools"
+             mc:Ignorable="d" KeyDown="HalconWindow_KeyDown"
+             d:DesignHeight="300" d:DesignWidth="400" Unloaded="UserControl_Unloaded" >
+    <Halcon:HWindowControlWPF Name="hwindow" Background="YellowGreen"     
+                                        SizeChanged="hwindow_SizeChanged"
+                                        HInitWindow="hwindow_HInitWindow" 
+                                        >
+    </Halcon:HWindowControlWPF>
+</UserControl>

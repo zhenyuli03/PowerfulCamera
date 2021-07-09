@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30330.147
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerfulCamera", "PowerfulCamera\PowerfulCamera.csproj", "{A6057982-EBB2-46CD-9DDC-084E3D2AEC81}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Socket", "Socket\Socket.csproj", "{5A53EEE0-D540-43B7-AA3D-50EADCEBBE39}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RpcTest", "RpcTest\RpcTest.csproj", "{A98CDEC5-FEE6-4416-B71A-1859DC94C129}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RpcServer", "RpcServer\RpcServer.csproj", "{A4D0697C-7C1D-4839-8CDD-0A288CCE00FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RpcServerFramework", "RpcServerFramework\RpcServerFramework.csproj", "{6985A407-277C-401E-AE3D-202DDDB5AA5B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "切片", "切片\切片.csproj", "{71BB02AB-3A58-4C95-A2CF-C526273AAD5A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HDevEnginer", "HDevEnginer\HDevEnginer.csproj", "{BBEE5191-7E5F-4902-9DA4-76CDAA9E229D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A6057982-EBB2-46CD-9DDC-084E3D2AEC81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6057982-EBB2-46CD-9DDC-084E3D2AEC81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6057982-EBB2-46CD-9DDC-084E3D2AEC81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6057982-EBB2-46CD-9DDC-084E3D2AEC81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A53EEE0-D540-43B7-AA3D-50EADCEBBE39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A53EEE0-D540-43B7-AA3D-50EADCEBBE39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A53EEE0-D540-43B7-AA3D-50EADCEBBE39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A53EEE0-D540-43B7-AA3D-50EADCEBBE39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A98CDEC5-FEE6-4416-B71A-1859DC94C129}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A98CDEC5-FEE6-4416-B71A-1859DC94C129}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A98CDEC5-FEE6-4416-B71A-1859DC94C129}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A98CDEC5-FEE6-4416-B71A-1859DC94C129}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4D0697C-7C1D-4839-8CDD-0A288CCE00FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4D0697C-7C1D-4839-8CDD-0A288CCE00FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4D0697C-7C1D-4839-8CDD-0A288CCE00FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4D0697C-7C1D-4839-8CDD-0A288CCE00FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6985A407-277C-401E-AE3D-202DDDB5AA5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6985A407-277C-401E-AE3D-202DDDB5AA5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6985A407-277C-401E-AE3D-202DDDB5AA5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6985A407-277C-401E-AE3D-202DDDB5AA5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71BB02AB-3A58-4C95-A2CF-C526273AAD5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71BB02AB-3A58-4C95-A2CF-C526273AAD5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71BB02AB-3A58-4C95-A2CF-C526273AAD5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71BB02AB-3A58-4C95-A2CF-C526273AAD5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBEE5191-7E5F-4902-9DA4-76CDAA9E229D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBEE5191-7E5F-4902-9DA4-76CDAA9E229D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBEE5191-7E5F-4902-9DA4-76CDAA9E229D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBEE5191-7E5F-4902-9DA4-76CDAA9E229D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7E5EED7C-BC60-4900-B847-676172C0D3CE}
+	EndGlobalSection
+EndGlobal
